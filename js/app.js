@@ -46,9 +46,14 @@ function makeMiddleEarth() {
 		//   2b. gives each land article an `id` tag of the corresponding land name
 		landArticle.id = lands[i]
 		//   2c. includes an h1 with the name of the land inside each land article
+		///////////////////////
 		const landName = document.createElement('h1')
 		landName.textContent = lands[i]
 		landArticle.appendChild(landName)
+		///////////////////////
+		// we could have used the method called innerHTML
+		// let landNameHtml = landArticle.innerHTML = `<h1>${lands[i]}</h1>`
+		// html strings get long and clunky after a while so I recommend against them
 		//   2d. appends each land to the middle-earth section
 		section.appendChild(landArticle)
 	}
@@ -66,14 +71,26 @@ function makeMiddleEarth() {
 
 function makeHobbits() {
 	console.log('2: makeHobbits')
-
-	// display an `unordered list` of hobbits in the shire
-
-	// give each hobbit a class of `hobbit`
-
-	// hint: create a 'ul' outside the loop into which to append the 'li's
-
+	// const theShire = document.querySelector('#The-Shire')
 	// hint: get 'The-Shire' by using its id
+	const theShire = document.getElementById('The-Shire')
+	console.log('this is the shire', theShire)
+	// display an `unordered list` of hobbits in the shire
+	// hint: create a 'ul' outside the loop into which to append the 'li's
+	const ulHobbits = document.createElement('ul')
+	ulHobbits.id = 'hobbits'
+	// give each hobbit a class of `hobbit`
+	for (let i = 0; i < hobbits.length; i++) {
+		// create an li for each hobbit
+		const liHobbit = document.createElement('li')
+		// give each hobbit a class
+		liHobbit.className = 'hobbit'
+		// give each hobbit some text
+		liHobbit.textContent = hobbits[i]
+		// append each hobbit to the ul
+		ulHobbits.appendChild(liHobbit)
+	}
+	theShire.appendChild(ulHobbits)
 }
 
 // COMMIT YOUR WORK
